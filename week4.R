@@ -206,3 +206,5 @@ plot(kClust$center[1, 1:10], pch=19, ylab="Cluster Center", xlab="")
 plot(kClust$center[6, 1:10], pch=19, ylab="Cluster Center", xlab="")
 # may be interested in understanding what separates the movement activities (walking, walking up, and walking down)
 # want to separate them out into their own primary components
+
+
