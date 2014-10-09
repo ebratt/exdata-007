@@ -98,11 +98,13 @@ abline(h = median(x1sub, na.rm = T))
 ## Find global range
 rng <- range(x0sub, x1sub, na.rm = T)
 rng
-par(mfrow = c(1, 2), mar = c(4, 4, 2, 1))
-plot(dates0, x0sub, pch = 20, ylim = rng)
+par(mfrow = c(1, 2), mar = c(5, 5, 2, 2))
+plot(dates0, x0sub, pch = 20, ylim = rng, xlab="1999", ylab=expression("PM"[2.5]))
 abline(h = median(x0sub, na.rm = T))
-plot(dates1, x1sub, pch = 20, ylim = rng)
+abline(h = mean(x0sub, na.rm = T), col="red")
+plot(dates1, x1sub, pch = 20, ylim = rng, xlab="2012", ylab=expression("PM"[2.5]))
 abline(h = median(x1sub, na.rm = T))
+abline(h = mean(x1sub, na.rm = T), col="red")
 
 ## Show state-wide means and make a plot showing trend
 head(pm0)
@@ -120,8 +122,7 @@ dim(mrg)
 head(mrg)
 
 ## Connect lines
-par(mfrow = c(1, 1))
-with(mrg, plot(rep(1, 52), mrg[, 2], xlim = c(.5, 2.5)))
-with(mrg, points(rep(2, 52), mrg[, 3]))
-segments(rep(1, 52), mrg[, 2], rep(2, 52), mrg[, 3])
-
+par(mfrow = c(1, 1), mar=c(4,5,5,2))
+with(mrg, plot(rep(1999, 52), mrg[, 2], xlim = c(1998,2013), ylim=c(0, 20), xlab="", ylab=expression("PM"[2.5]), main=expression("Average State-by-State PM"[2.5])))
+with(mrg, points(rep(2012, 52), mrg[, 3]))
+segments(rep(1999, 52), mrg[, 2], rep(2012, 52), mrg[, 3])
